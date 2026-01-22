@@ -64,4 +64,3 @@ db.employees.find({ age: { $lte: 25 } });
 db.employees.find({
   salary: { $gte: 40000, $lte: 80000 }
 });
-
