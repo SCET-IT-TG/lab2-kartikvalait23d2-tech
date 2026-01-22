@@ -1,0 +1,86 @@
+// ================================
+// Exercise 1: Data Setup
+// ================================
+db = db.getSiblingDB("companyDB");
+
+db.employees.insertMany([
+  {
+    name: "kartik",
+    department: "IT",
+    salary: 60000,
+    age:20
+  },
+  {
+    name: "smit",
+    department: "HR",
+    salary: 45000,
+    age: 9
+  },
+  {
+    name: "upen",
+    department: "Sales",
+    salary: 30000,
+    age: 22
+  },
+  {
+    name: "meet",
+    department: "IT",
+    salary: 80000,
+    age: 23
+  },
+  {
+    name: "zeel",
+    department: "Sales",
+    salary: 25000,
+    age: 23
+  }
+]);
+
+// ================================
+// Exercise 2: Simple Find Queries
+// ================================
+
+// Find all employees in the IT department
+db.employees.find({ department: "IT" });
+
+// Find the employee with the name "Rahul"
+db.employees.find({ name: "kartik" });
+
+// ================================
+// Exercise 3: Formatting & Distinct
+// ================================
+
+// Display all employees using pretty()
+db.employees.find().pretty();
+
+// Find all unique departments
+db.employees.distinct("department");
+
+// ================================
+// Exercise 4: Salary Analysis
+// ================================
+
+// Find employees with salary greater than 50000
+db.employees.find({ salary: { $gt: 50000 } });
+
+// Find employees with salary less than 30000
+db.employees.find({ salary: { $lt: 30000 } });
+
+// ================================
+// Exercise 5: Age Filtering
+// ================================
+
+// Find employees with age greater than or equal to 30
+db.employees.find({ age: { $gte: 22 } });
+
+// Find employees with age less than or equal to 25
+db.employees.find({ age: { $lte: 23 } });
+
+// ================================
+// Exercise 6: Range Queries
+// ================================
+
+// Find employees with salary between 40000 and 80000 (inclusive)
+db.employees.find({
+  salary: { $gte: 40000, $lte: 80000 }
+});
